@@ -1,0 +1,19 @@
+body {
+  font-family: "barlow", sans-serif !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+button {
+  font-family: "barlow", sans-serif !important;
+}
+
+.z-3 {
+  z-index: 3;
+}
+
+.fade-image {
+  background: linear-gradient(to left, transparent 50%, rgba(255, 255, 255));
+}
