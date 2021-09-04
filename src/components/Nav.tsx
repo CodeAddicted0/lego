@@ -10,6 +10,7 @@ import { setNavHeight } from "../redux/navHeight";
 const Nav: FC = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const [navOpen, setNavOpen] = useState<boolean>(false);
+  const [hasMounted, setHasMounted] = useState<boolean>(false);
   const navRef = useRef<HTMLElement>(null);
   const dispatch = useAppDispatch();
 
@@ -21,6 +22,10 @@ const Nav: FC = () => {
         );
       }
     }
+  }, []);
+
+  useEffect(() => {
+    setHasMounted(true);
   }, []);
 
   return (
@@ -38,13 +43,13 @@ const Nav: FC = () => {
           <FcHome /> <span>Lego</span>
         </h1>
 
-        {isTabletOrMobile && (
+        {isTabletOrMobile && hasMounted && (
           <button onClick={() => setNavOpen(true)}>
             <AiOutlineMenu color="#fff" fontSize="2rem" />
           </button>
         )}
 
-        {!isTabletOrMobile && (
+        {!isTabletOrMobile && hasMounted && (
           <ul className="flex space-x-16 items-center font-medium text-dim-white">
             <li>
               <Link href="#properties">Properties</Link>
@@ -61,7 +66,7 @@ const Nav: FC = () => {
           </ul>
         )}
       </nav>
-      {isTabletOrMobile && (
+      {isTabletOrMobile && hasMounted && (
         <div
           className={`fixed ${
             navOpen ? "left-0" : "left-full"

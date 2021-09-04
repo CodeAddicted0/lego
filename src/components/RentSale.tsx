@@ -4,7 +4,7 @@ import { RiSearch2Line } from "react-icons/ri";
 
 const RentSale: FC = () => {
   const [selectedTab, setSelectedTab] = useState<"sale" | "rent">("sale");
-  const [listOpen, setListOpen] = useState<boolean>(false);
+
   return (
     <div className="mt-16">
       <div>
@@ -34,7 +34,7 @@ const RentSale: FC = () => {
             <FiHome className="text-blue-600" fontSize="1.5rem" />
             <select
               defaultValue="default"
-              className="outline-none font-medium font-barlow"
+              className="outline-none font-medium font-barlow bg-white"
             >
               <option value="default" disabled>
                 Select property type

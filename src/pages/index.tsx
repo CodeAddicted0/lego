@@ -11,38 +11,20 @@ import Image from "next/image";
 import { BiBed, BiArea } from "react-icons/bi";
 import { ImAirplane } from "react-icons/im";
 import { useAppSelector } from "../redux/reduxHooks";
+import sales from "../libs/salesHouse";
+import { useState, useEffect } from "react";
 
 const Home: NextPage = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-  const isNotMobile = useMediaQuery({ query: "(min-width: 768px)" });
+  const isNotMobile = useMediaQuery({ query: "(min-width: 769px)" });
   const navHeight = useAppSelector((store) => store.navHeight);
 
-  const sales = [
-    {
-      price: "24,000",
-      location: "31, Gedawang Permai St, Semarang",
-      bedrooms: 5,
-      bathrooms: 4,
-      area: 360,
-      image: "/1.webp",
-    },
-    {
-      price: "32,000",
-      location: "12, Maburi Lapangan Bumerijo, Semarang",
-      bedrooms: 6,
-      bathrooms: 5,
-      area: 480,
-      image: "/2.webp",
-    },
-    {
-      price: "12,000",
-      location: "5, Tusaam Mbelok Kiri St, Semarang",
-      bedrooms: 3,
-      bathrooms: 2,
-      area: 280,
-      image: "/3.webp",
-    },
-  ];
+  const [hasMounted, setHasMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   return (
     <>
       <Head>
@@ -63,14 +45,14 @@ const Home: NextPage = () => {
             left: "-10%",
           }}
         ></div>
-        {!isTabletOrMobile && <HeroBigImage />}
+        {!isTabletOrMobile && hasMounted && <HeroBigImage />}
         <Hero />
       </div>
       {/* Sale Section */}
       <section
         id="properties"
         style={{ scrollMarginTop: `${navHeight}px` }}
-        className="md:py-28 md:px-28 px-8 py-8 flex flex-col bg-[#F3F4F6]"
+        className="md:py-24 md:px-28 px-8 py-8 flex flex-col bg-[#F3F4F6]"
       >
         <div className="flex items-center justify-between">
           <div className="flex md:items-center flex-col md:flex-row">
@@ -94,7 +76,9 @@ const Home: NextPage = () => {
               a well-priced.
             </p>
           </div>
-          {!isTabletOrMobile && <BsArrowRight fontSize="1.5rem" />}
+          {!isTabletOrMobile && hasMounted && (
+            <BsArrowRight fontSize="1.5rem" />
+          )}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
           {sales.map((sale) => (
@@ -245,7 +229,7 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        {isNotMobile && (
+        {isNotMobile && hasMounted && (
           <div
             style={{ flexBasis: "40%" }}
             className="grid relative place-items-center"
