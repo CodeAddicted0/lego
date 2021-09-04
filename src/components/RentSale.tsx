@@ -56,7 +56,10 @@ const RentSale: FC = () => {
                 type="search"
               />
             </div>
-            <button className="py-4 px-8 rounded bg-blue-600 hover:bg-blue-700 text-white">
+            <button
+              onClick={() => alert("LOL. this is a dummy website.")}
+              className="py-4 px-8 rounded bg-blue-600 hover:bg-blue-700 text-white"
+            >
               Search
             </button>
           </div>

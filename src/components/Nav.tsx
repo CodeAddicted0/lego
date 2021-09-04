@@ -71,7 +71,7 @@ const Nav: FC = () => {
           className={`fixed ${
             navOpen ? "left-0" : "left-full"
           } from-gray-800 to-gray-900 bg-gradient-to-br py-8 top-0 h-full w-full flex-col flex items-end px-8 justify-center transition-all duration-300`}
-          style={{ zIndex: 4 }}
+          style={{ zIndex: 11 }}
         >
           <div className="flex justify-between items-center w-full">
             <h1 className="font-openSans text-white font-bold text-2xl flex items-center space-x-3">

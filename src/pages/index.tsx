@@ -1,18 +1,22 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
+import { useAppSelector } from "../redux/reduxHooks";
+import { useMediaQuery } from "react-responsive";
+import { useState, useEffect } from "react";
+// components
 import Hero from "../components/Hero";
 import Nav from "../components/Nav";
 import HeroBigImage from "../components/HeroBigImage";
+import SaleHouse from "../components/SaleHouse";
+import ScrollTop from "../components/ScrollToTop";
+// libs
+import sales from "../libs/salesHouse";
+// react icons
 import { FcBinoculars } from "react-icons/fc";
 import { BsArrowRight, BsStarFill } from "react-icons/bs";
-import SaleHouse from "../components/SaleHouse";
-import { useMediaQuery } from "react-responsive";
-import Image from "next/image";
 import { BiBed, BiArea } from "react-icons/bi";
 import { ImAirplane } from "react-icons/im";
-import { useAppSelector } from "../redux/reduxHooks";
-import sales from "../libs/salesHouse";
-import { useState, useEffect } from "react";
 import { IoMdCall } from "react-icons/io";
 import { HiMail, HiLocationMarker, HiOutlineMail } from "react-icons/hi";
 import { FiInstagram, FiTwitter } from "react-icons/fi";
@@ -23,11 +27,27 @@ const Home: NextPage = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const isNotMobile = useMediaQuery({ query: "(min-width: 769px)" });
   const navHeight = useAppSelector((store) => store.navHeight);
-
   const [hasMounted, setHasMounted] = useState<boolean>(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  const toggleVisibility = () => {
+    if (typeof window !== "undefined") {
+      if (window.pageYOffset > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    }
+  };
 
   useEffect(() => {
     setHasMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", toggleVisibility);
+    }
   }, []);
 
   return (
@@ -35,10 +55,10 @@ const Home: NextPage = () => {
       <Head>
         <title>Lego - Real Estate</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preload" as="image" href="/hero.webp" sizes="100%" />
       </Head>
-      {/* Navigation Bar */}
+      {/* Navigations */}
       <Nav />
+      {showScrollTop && hasMounted && <ScrollTop />}
       {/* Hero Section */}
       <div className="flex flex-col justify-center text-white bg-black-bg relative">
         <div
@@ -305,13 +325,13 @@ const Home: NextPage = () => {
             </button>
           </div>
           <div className="flex space-x-8 items-center">
-            <button className="hover:bg-gray-900 bg-black-bg transition duration-200 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
+            <button className="hover:bg-gray-800 bg-transparent transition duration-300 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
               <FaFacebookF />
             </button>
-            <button className="hover:bg-gray-900 bg-black-bg transition duration-200 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
+            <button className="hover:bg-gray-800 bg-transparent transition duration-300 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
               <FiTwitter />
             </button>
-            <button className="hover:bg-gray-900 bg-black-bg transition duration-200 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
+            <button className="hover:bg-gray-800 bg-transparent transition duration-300 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
               <FiInstagram />
             </button>
           </div>
@@ -380,6 +400,7 @@ const Home: NextPage = () => {
           <button
             className="px-10 py-3 text-dim-white font-medium bg-blue-500 hover:bg-blue-600 rounded-lg"
             style={{ width: "fit-content" }}
+            onClick={() => alert("LOL. this is a dummy website.")}
           >
             Send
           </button>
