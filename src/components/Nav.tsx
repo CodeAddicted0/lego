@@ -61,7 +61,7 @@ const Nav: FC = () => {
               <Link href="#testimonial">Testimonial</Link>
             </li>
             <li>
-              <Link href="/">Contact</Link>
+              <Link href="#contact">Contact</Link>
             </li>
           </ul>
         )}
@@ -92,7 +92,7 @@ const Nav: FC = () => {
               <Link href="#testimonial">Testimonial</Link>
             </li>
             <li onClick={() => setNavOpen(false)}>
-              <Link href="/">Contact</Link>
+              <Link href="#contact">Contact</Link>
             </li>
           </ul>
         </div>

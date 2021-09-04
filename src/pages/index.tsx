@@ -13,6 +13,11 @@ import { ImAirplane } from "react-icons/im";
 import { useAppSelector } from "../redux/reduxHooks";
 import sales from "../libs/salesHouse";
 import { useState, useEffect } from "react";
+import { IoMdCall } from "react-icons/io";
+import { HiMail, HiLocationMarker, HiOutlineMail } from "react-icons/hi";
+import { FiInstagram, FiTwitter } from "react-icons/fi";
+import { FaFacebookF } from "react-icons/fa";
+import { RiUser4Line } from "react-icons/ri";
 
 const Home: NextPage = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
@@ -30,6 +35,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Lego - Real Estate</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preload" as="image" href="/hero.webp" sizes="100%" />
       </Head>
       {/* Navigation Bar */}
       <Nav />
@@ -111,6 +117,8 @@ const Home: NextPage = () => {
             width={350}
             height={450}
             className="z-3"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8UA8AAgUBQbH2eGIAAAAASUVORK5CYII="
+            placeholder="blur"
           />
           <div className="w-40 h-72 right-0 rounded-md bg-gray-300 absolute md:right-10 bottom-0"></div>
         </div>
@@ -241,9 +249,141 @@ const Home: NextPage = () => {
               width={500}
               objectFit="cover"
               height={550}
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8UA8AAgUBQbH2eGIAAAAASUVORK5CYII="
+              placeholder="blur"
             />
           </div>
         )}
+      </section>
+      {/* Contact Section */}
+      <section
+        id="contact"
+        style={
+          hasMounted
+            ? {
+                scrollMarginTop: `${navHeight}px`,
+                height: isNotMobile ? `calc(100vh - ${navHeight}px)` : "",
+              }
+            : { scrollMarginTop: `${navHeight}px` }
+        }
+        className="flex space-y-6 md:space-y-0 flex-col md:flex-row md:px-28 px-8 py-12 bg-black-bg"
+      >
+        <div
+          style={{ flexBasis: "60%" }}
+          className="flex flex-col space-y-8 justify-between"
+        >
+          <div className="flex flex-col space-y-4 md:space-y-8">
+            <h1 className="font-openSans text-3xl md:text-5xl text-white">
+              Get a qoute.
+            </h1>
+            <p className="text-dim-white text-xl">
+              Fill up the form and our team will get back to you within 24
+              hours.
+            </p>
+          </div>
+          <div className="flex flex-col space-y-4 md:space-y-8">
+            <button
+              className="space-x-4 border-2 text-dim-white font-medium py-4 px-6 rounded-lg inline-flex items-center border-white md:text-xl hover:bg-dim-white bg-transparent transition duration-300 hover:text-black-bg"
+              style={{ width: "fit-content" }}
+            >
+              <IoMdCall fontSize="1.7rem" />
+              <span>+1234 567 8901</span>
+            </button>
+            <button
+              className="space-x-4 text-dim-white font-medium py-4 px-6 rounded-lg inline-flex items-center border-2 border-white md:text-xl hover:bg-dim-white bg-transparent transition duration-300 hover:text-black-bg"
+              style={{ width: "fit-content" }}
+            >
+              <HiMail fontSize="1.7rem" />
+              <span>lego@realestate.com</span>
+            </button>
+            <button
+              className="space-x-4 text-dim-white font-medium py-4 px-6 rounded-lg inline-flex items-center border-2 border-white md:text-xl hover:bg-dim-white bg-transparent transition duration-300 hover:text-black-bg"
+              style={{ width: "fit-content" }}
+            >
+              <HiLocationMarker fontSize="1.7rem" />
+              <span className="text-left">102 Bermingham Street, London.</span>
+            </button>
+          </div>
+          <div className="flex space-x-8 items-center">
+            <button className="hover:bg-gray-900 bg-black-bg transition duration-200 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
+              <FaFacebookF />
+            </button>
+            <button className="hover:bg-gray-900 bg-black-bg transition duration-200 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
+              <FiTwitter />
+            </button>
+            <button className="hover:bg-gray-900 bg-black-bg transition duration-200 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
+              <FiInstagram />
+            </button>
+          </div>
+        </div>
+        <div
+          style={{ flexBasis: "40%" }}
+          className="bg-dim-white rounded-lg h-full flex flex-col space-y-6 p-6 md:p-12"
+        >
+          <div className="flex flex-col space-y-3">
+            <label
+              htmlFor="name"
+              style={{ width: "fit-content" }}
+              className="font-medium text-md"
+            >
+              Your Name
+            </label>
+            <div className="flex w-full rounded-md shadow-sm items-center bg-white relative text-xl">
+              <span className="flex items-center justify-between pointer-events-none absolute ml-4">
+                <RiUser4Line className="text-gray-600" />
+              </span>
+              <input
+                type="text"
+                placeholder="ex: John Smith"
+                name="name"
+                id="name"
+                className="w-full pl-12 text-base bg-transparent border-gray-300 rounded-md inline-block py-4 outline-none border-2 focus:border-blue-600 font-medium"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col space-y-3">
+            <label
+              htmlFor="name"
+              style={{ width: "fit-content" }}
+              className="font-medium text-md"
+            >
+              Your Email
+            </label>
+            <div className="flex w-full rounded-md shadow-sm items-center bg-white relative text-xl">
+              <span className="flex items-center justify-between pointer-events-none absolute ml-4">
+                <HiOutlineMail className="text-gray-600" />
+              </span>
+              <input
+                type="text"
+                placeholder="ex: youremail@gmail.com"
+                name="name"
+                id="name"
+                className="w-full pl-12 text-base bg-transparent border-gray-300 rounded-md inline-block py-4 outline-none border-2 focus:border-blue-600 font-medium"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col space-y-3">
+            <label
+              htmlFor="message"
+              style={{ width: "fit-content" }}
+              className="font-medium text-md"
+            >
+              Message
+            </label>
+            <textarea
+              placeholder="your message."
+              name="message"
+              id="message"
+              className="w-full text-base bg-transparent border-gray-300 rounded-md inline-block p-4 outline-none border-2 focus:border-blue-600 font-medium"
+            />
+          </div>
+          <button
+            className="px-10 py-3 text-dim-white font-medium bg-blue-500 hover:bg-blue-600 rounded-lg"
+            style={{ width: "fit-content" }}
+          >
+            Send
+          </button>
+        </div>
       </section>
     </>
   );
