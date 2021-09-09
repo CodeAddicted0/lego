@@ -1,9 +1,16 @@
 import { FC, useState } from "react";
 import { FiHome } from "react-icons/fi";
 import { RiSearch2Line } from "react-icons/ri";
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+import { useMediaQuery } from "react-responsive";
 
 const RentSale: FC = () => {
   const [selectedTab, setSelectedTab] = useState<"sale" | "rent">("sale");
+  const [listOpen, setListOpen] = useState<boolean>(false);
+  const [listSelected, setListSelected] = useState<
+    "Villa" | "Old School" | "Modern" | "Simple House" | "Select property type"
+  >("Select property type");
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   return (
     <div className="mt-16">
@@ -32,20 +39,86 @@ const RentSale: FC = () => {
         >
           <div className="p-8 flex space-x-8 items-center border-r-2 border-gray-300">
             <FiHome className="text-blue-600" fontSize="1.5rem" />
-            <select
+            <div
+              className="flex relative w-48 justify-between items-center space-x-4 overflow-visible"
+              onMouseEnter={() => setListOpen(true)}
+              onMouseLeave={() => setListOpen(false)}
+              onTouchStart={() => setListOpen(true)}
+              style={{
+                userSelect: "none",
+                WebkitUserSelect: "none",
+                msUserSelect: "none",
+                MozUserSelect: "none",
+              }}
+            >
+              <span className="font-medium">{listSelected}</span>
+              <AiFillCaretDown color="#222" />
+              <div
+                className="absolute !ml-0 left-0 top-full bg-white right-0 flex flex-col border-r border-l border-t border-black rounded transition duration-300 cursor-pointer origin-top"
+                style={
+                  listOpen
+                    ? {
+                        transform: "scaleY(1)",
+                        opacity: 1,
+                      }
+                    : {
+                        transform: "scaleY(0)",
+                        opacity: 0,
+                      }
+                }
+              >
+                <span
+                  className="py-2 hover:bg-gray-200 font-medium px-4 border-b border-black"
+                  onClick={() => {
+                    setListSelected("Villa");
+                    setListOpen(false);
+                  }}
+                >
+                  Villa
+                </span>
+                <span
+                  onClick={() => {
+                    setListSelected("Simple House");
+                    setListOpen(false);
+                  }}
+                  className="py-2 hover:bg-gray-200 font-medium px-4 border-b border-black"
+                >
+                  Simple House
+                </span>
+                <span
+                  onClick={() => {
+                    setListSelected("Old School");
+                    setListOpen(false);
+                  }}
+                  className="py-2 hover:bg-gray-200 font-medium px-4 border-b border-black"
+                >
+                  Old School
+                </span>
+                <span
+                  onClick={() => {
+                    setListSelected("Modern");
+                    setListOpen(false);
+                  }}
+                  className="py-2 hover:bg-gray-200 font-medium px-4 border-b border-black"
+                >
+                  Modern
+                </span>
+              </div>
+            </div>
+            {/* <select
               defaultValue="default"
               className="outline-none font-medium font-barlow bg-white"
             >
               <option value="default" disabled>
                 Select property type
               </option>
-              <option className="p-4" value="volvo">
+              <option value="volvo">
                 Villa
               </option>
               <option value="saab">Simple House</option>
               <option value="mercedes">Old School</option>
               <option value="audi">Modern</option>
-            </select>
+            </select> */}
           </div>
           <div className="px-8 py-2 flex-col md:flex-row flex space-y-6 md:space-y-0 md:space-x-6 items-center w-max">
             <div className="flex space-x-6 items-center">

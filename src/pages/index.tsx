@@ -102,9 +102,6 @@ const Home: NextPage = () => {
               a well-priced.
             </p>
           </div>
-          {!isTabletOrMobile && hasMounted && (
-            <BsArrowRight fontSize="1.5rem" />
-          )}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
           {sales.map((sale) => (
@@ -147,7 +144,7 @@ const Home: NextPage = () => {
           className="flex flex-col md:ml-10 space-y-8 md:px-12"
         >
           <h1 className="font-openSans text-2xl md:text-4xl text-gray-800">
-            Let's Meet Rebsio! 🔥
+            Let's Meet Rebsio!
           </h1>
           <p className="font-medium text-gray-600">
             Historic property of noble families over the centuries, then of the
@@ -195,7 +192,7 @@ const Home: NextPage = () => {
             </div>
           </div>
           <a
-            href=""
+            href="#"
             className="flex items-center font-openSans font-bold text-blue-600 text-md md:!mt-20"
           >
             See more Details
@@ -260,7 +257,7 @@ const Home: NextPage = () => {
         {isNotMobile && hasMounted && (
           <div
             style={{ flexBasis: "40%" }}
-            className="grid relative place-items-center"
+            className="grid relative items-center justify-items-end"
           >
             <div className="absolute inset-0 z-3 fade-image"></div>
             <Image
@@ -325,13 +322,22 @@ const Home: NextPage = () => {
             </button>
           </div>
           <div className="flex space-x-8 items-center">
-            <button className="hover:bg-gray-800 bg-transparent transition duration-300 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
+            <button
+              className="hover:bg-gray-800 bg-transparent transition duration-300 text-dim-white text-2xl rounded-full p-4 grid place-items-center"
+              aria-label="facebook"
+            >
               <FaFacebookF />
             </button>
-            <button className="hover:bg-gray-800 bg-transparent transition duration-300 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
+            <button
+              className="hover:bg-gray-800 bg-transparent transition duration-300 text-dim-white text-2xl rounded-full p-4 grid place-items-center"
+              aria-label="twitter"
+            >
               <FiTwitter />
             </button>
-            <button className="hover:bg-gray-800 bg-transparent transition duration-300 text-dim-white text-2xl rounded-full p-4 grid place-items-center">
+            <button
+              className="hover:bg-gray-800 bg-transparent transition duration-300 text-dim-white text-2xl rounded-full p-4 grid place-items-center"
+              aria-label="instagram"
+            >
               <FiInstagram />
             </button>
           </div>
@@ -363,7 +369,7 @@ const Home: NextPage = () => {
           </div>
           <div className="flex flex-col space-y-3">
             <label
-              htmlFor="name"
+              htmlFor="email"
               style={{ width: "fit-content" }}
               className="font-medium text-md"
             >
@@ -376,8 +382,8 @@ const Home: NextPage = () => {
               <input
                 type="text"
                 placeholder="ex: youremail@gmail.com"
-                name="name"
-                id="name"
+                name="email"
+                id="email"
                 className="w-full pl-12 text-base bg-transparent border-gray-300 rounded-md inline-block py-4 outline-none border-2 focus:border-blue-600 font-medium"
               />
             </div>
@@ -395,6 +401,8 @@ const Home: NextPage = () => {
               name="message"
               id="message"
               className="w-full text-base bg-transparent border-gray-300 rounded-md inline-block p-4 outline-none border-2 focus:border-blue-600 font-medium"
+              style={{ backgroundColor: "white" }}
+              rows={3}
             />
           </div>
           <button

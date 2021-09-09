@@ -31,7 +31,7 @@ const Nav: FC = () => {
   return (
     <>
       <nav
-        className="px-8 flex justify-between items-center py-8 md:px-28 sticky border-b border-gray-500 top-0"
+        className="px-8 flex justify-between items-center py-8 md:px-28 sticky  border-gray-500 top-0"
         style={{
           zIndex: 4,
           background: "rgba(6, 10, 17, 1)",
@@ -44,7 +44,7 @@ const Nav: FC = () => {
         </h1>
 
         {isTabletOrMobile && hasMounted && (
-          <button onClick={() => setNavOpen(true)}>
+          <button onClick={() => setNavOpen(true)} aria-label="menu">
             <AiOutlineMenu color="#fff" fontSize="2rem" />
           </button>
         )}
@@ -77,7 +77,7 @@ const Nav: FC = () => {
             <h1 className="font-openSans text-white font-bold text-2xl flex items-center space-x-3">
               <FcHome /> <span>Lego</span>
             </h1>
-            <button onClick={() => setNavOpen(false)}>
+            <button onClick={() => setNavOpen(false)} aria-label="close">
               <VscClose color="#fff" fontSize="2rem" />
             </button>
           </div>
