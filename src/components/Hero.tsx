@@ -26,7 +26,7 @@ const Hero: FC = () => {
             }
       }
     >
-      <h1 className="font-openSans text-4xl font-bold md:text-7xl leading-none">
+      <h1 className="font-openSans text-4xl sm:text-5xl font-bold md:text-7xl leading-none">
         Sell or rent
         <br /> your home at
         <br /> the best price.

@@ -143,7 +143,7 @@ const Home: NextPage = () => {
           style={{ flexBasis: "60%" }}
           className="flex flex-col md:ml-10 space-y-8 md:px-12"
         >
-          <h1 className="font-openSans text-2xl md:text-4xl text-gray-800">
+          <h1 className="font-openSans text-3xl md:text-4xl text-gray-800">
             Let's Meet Rebsio!
           </h1>
           <p className="font-medium text-gray-600">
@@ -165,7 +165,7 @@ const Home: NextPage = () => {
                 </div>
               </div>
               <div className="flex flex-col">
-                <h1 className="text-2xl font-openSans font-bold text-gray-800">
+                <h1 className="md:text-2xl text-xl font-openSans font-bold text-gray-800">
                   1000m<sup>2</sup>
                 </h1>
                 <p className="font-medium">Living Area</p>
@@ -184,7 +184,7 @@ const Home: NextPage = () => {
                 </div>
               </div>
               <div className="flex flex-col">
-                <h1 className="text-2xl font-openSans font-bold text-gray-800">
+                <h1 className="md:text-2xl text-xl font-openSans font-bold text-gray-800">
                   8 Bedrooms
                 </h1>
                 <p className="font-medium">Bedroom</p>
@@ -247,7 +247,7 @@ const Home: NextPage = () => {
               objectFit="cover"
             />
             <div className="flex flex-col space-y-3 justify-center">
-              <p className="text-gray-800 font-openSans text-2xl">
+              <p className="text-gray-800 font-openSans md:text-2xl text-xl">
                 Joseph Romy
               </p>
               <p className="text-gray-600 text-lg">Founder of Trustpilot</p>

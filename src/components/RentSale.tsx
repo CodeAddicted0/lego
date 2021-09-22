@@ -1,8 +1,7 @@
 import { FC, useState } from "react";
 import { FiHome } from "react-icons/fi";
 import { RiSearch2Line } from "react-icons/ri";
-import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
-import { useMediaQuery } from "react-responsive";
+import { AiFillCaretDown } from "react-icons/ai";
 
 const RentSale: FC = () => {
   const [selectedTab, setSelectedTab] = useState<"sale" | "rent">("sale");
@@ -10,7 +9,6 @@ const RentSale: FC = () => {
   const [listSelected, setListSelected] = useState<
     "Villa" | "Old School" | "Modern" | "Simple House" | "Select property type"
   >("Select property type");
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   return (
     <div className="mt-16">
@@ -105,20 +103,6 @@ const RentSale: FC = () => {
                 </span>
               </div>
             </div>
-            {/* <select
-              defaultValue="default"
-              className="outline-none font-medium font-barlow bg-white"
-            >
-              <option value="default" disabled>
-                Select property type
-              </option>
-              <option value="volvo">
-                Villa
-              </option>
-              <option value="saab">Simple House</option>
-              <option value="mercedes">Old School</option>
-              <option value="audi">Modern</option>
-            </select> */}
           </div>
           <div className="px-8 py-2 flex-col md:flex-row flex space-y-6 md:space-y-0 md:space-x-6 items-center w-max">
             <div className="flex space-x-6 items-center">
@@ -131,7 +115,7 @@ const RentSale: FC = () => {
             </div>
             <button
               onClick={() => alert("LOL. this is a dummy website.")}
-              className="py-4 px-8 rounded bg-blue-600 hover:bg-blue-700 text-white"
+              className="py-4 px-8 rounded bg-blue-600 hover:bg-blue-700 text-white font-medium"
             >
               Search
             </button>
