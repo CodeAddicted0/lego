@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   font-family: "barlow", sans-serif !important;
 }
@@ -16,4 +20,8 @@ button {
 
 .fade-image {
   background: linear-gradient(to left, transparent 50%, rgba(255, 255, 255));
+}
+
+.no-tap-highlight {
+  -webkit-tap-highlight-color: transparent;
 }

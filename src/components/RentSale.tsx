@@ -9,6 +9,12 @@ const RentSale: FC = () => {
   const [listSelected, setListSelected] = useState<
     "Villa" | "Old School" | "Modern" | "Simple House" | "Select property type"
   >("Select property type");
+  const options: ["Villa", "Old School", "Modern", "Simple House"] = [
+    "Villa",
+    "Old School",
+    "Modern",
+    "Simple House",
+  ];
 
   return (
     <div className="mt-16">
@@ -35,10 +41,10 @@ const RentSale: FC = () => {
           className="flex flex-col md:flex-row bg-white text-black relative rounded-tr-md rounded-br-md rounded-bl-md"
           style={{ width: "fit-content" }}
         >
-          <div className="p-8 flex space-x-8 items-center border-r-2 border-gray-300">
+          <div className="py-8 px-4 sm:px-8 flex space-x-8 items-center border-r-2 border-gray-300">
             <FiHome className="text-blue-600" fontSize="1.5rem" />
             <div
-              className="flex relative w-48 justify-between items-center space-x-4 overflow-visible"
+              className="flex relative w-48 justify-between items-center space-x-4 overflow-visible no-tap-highlight"
               onMouseEnter={() => setListOpen(true)}
               onMouseLeave={() => setListOpen(false)}
               onTouchStart={() => setListOpen(true)}
@@ -52,7 +58,7 @@ const RentSale: FC = () => {
               <span className="font-medium">{listSelected}</span>
               <AiFillCaretDown color="#222" />
               <div
-                className="absolute !ml-0 left-0 top-full bg-white right-0 flex flex-col border-r border-l border-t border-black rounded transition duration-300 cursor-pointer origin-top"
+                className="absolute !ml-0 left-0 top-full bg-white right-0 flex flex-col border border-black rounded transition duration-300 cursor-pointer origin-top w-full"
                 style={
                   listOpen
                     ? {
@@ -65,46 +71,26 @@ const RentSale: FC = () => {
                       }
                 }
               >
-                <span
-                  className="py-2 hover:bg-gray-200 font-medium px-4 border-b border-black"
-                  onClick={() => {
-                    setListSelected("Villa");
-                    setListOpen(false);
-                  }}
-                >
-                  Villa
-                </span>
-                <span
-                  onClick={() => {
-                    setListSelected("Simple House");
-                    setListOpen(false);
-                  }}
-                  className="py-2 hover:bg-gray-200 font-medium px-4 border-b border-black"
-                >
-                  Simple House
-                </span>
-                <span
-                  onClick={() => {
-                    setListSelected("Old School");
-                    setListOpen(false);
-                  }}
-                  className="py-2 hover:bg-gray-200 font-medium px-4 border-b border-black"
-                >
-                  Old School
-                </span>
-                <span
-                  onClick={() => {
-                    setListSelected("Modern");
-                    setListOpen(false);
-                  }}
-                  className="py-2 hover:bg-gray-200 font-medium px-4 border-b border-black"
-                >
-                  Modern
-                </span>
+                {options.map((value, index) => (
+                  <span
+                    key={index}
+                    className={`py-2 ${
+                      value === listSelected
+                        ? "bg-blue-200 hover:bg-blue-200"
+                        : "hover:bg-gray-200"
+                    } font-medium px-4`}
+                    onClick={() => {
+                      setListSelected(value);
+                      setListOpen(false);
+                    }}
+                  >
+                    {value}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
-          <div className="px-8 py-2 flex-col md:flex-row flex space-y-6 md:space-y-0 md:space-x-6 items-center w-max">
+          <div className="px-4 py-2 sm:px-8 flex-col md:flex-row flex space-y-6 md:space-y-0 md:space-x-6 items-center w-max">
             <div className="flex space-x-6 items-center">
               <RiSearch2Line className="text-blue-600" fontSize="1.5rem" />
               <input
@@ -115,7 +101,7 @@ const RentSale: FC = () => {
             </div>
             <button
               onClick={() => alert("LOL. this is a dummy website.")}
-              className="py-4 px-8 rounded bg-blue-600 hover:bg-blue-700 text-white font-medium"
+              className="py-3 px-6 sm:py-4 sm:px-8 rounded bg-blue-600 hover:bg-blue-700 text-white font-medium"
             >
               Search
             </button>

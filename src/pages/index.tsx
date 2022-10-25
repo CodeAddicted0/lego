@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/future/image";
 import { useAppSelector } from "../redux/reduxHooks";
 import { useMediaQuery } from "react-responsive";
 import { useState, useEffect } from "react";
@@ -130,7 +130,7 @@ const Home: NextPage = () => {
           <Image
             src="/rebsio.webp"
             alt="rebsio"
-            objectFit="cover"
+            style={{ objectFit: "cover", width: "100%", height: "auto" }}
             width={350}
             height={450}
             className="z-3"
@@ -244,7 +244,7 @@ const Home: NextPage = () => {
               height={100}
               width={100}
               className="rounded-full"
-              objectFit="cover"
+              style={{ objectFit: "cover", aspectRatio: "1" }}
             />
             <div className="flex flex-col space-y-3 justify-center">
               <p className="text-gray-800 font-openSans md:text-2xl text-xl">
@@ -264,7 +264,7 @@ const Home: NextPage = () => {
               src="/interior.webp"
               alt="home interior"
               width={500}
-              objectFit="cover"
+              style={{ objectFit: "cover", aspectRatio: "1", width: "100%" }}
               height={550}
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8UA8AAgUBQbH2eGIAAAAASUVORK5CYII="
               placeholder="blur"
@@ -318,7 +318,7 @@ const Home: NextPage = () => {
               style={{ width: "fit-content" }}
             >
               <HiLocationMarker fontSize="1.7rem" />
-              <span className="text-left">102 Bermingham Street, London.</span>
+              <span className="text-left">102 Birmingham Street, London.</span>
             </button>
           </div>
           <div className="flex space-x-8 items-center">

@@ -8,7 +8,7 @@ const HeroBigImage: FC = () => {
       style={{ zIndex: 2 }}
     >
       <Image
-        priority={true}
+        priority
         quality={100}
         alt="house"
         src="/hero.webp"

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Image from "next/image";
+import Image from "next/future/image";
 import { BiBed, BiBath, BiArea } from "react-icons/bi";
 
 interface Props {
@@ -22,11 +22,11 @@ const SaleHouse: FC<Props> = ({
   return (
     <div className="flex flex-col">
       <Image
-        alt="property"
+        alt="property image"
         src={image}
         height={230}
         width={300}
-        objectFit="cover"
+        style={{ objectFit: "cover", width: "100%", aspectRatio: "16/9" }}
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNUCej+DwADnwIAgg+j6gAAAABJRU5ErkJggg=="
       />

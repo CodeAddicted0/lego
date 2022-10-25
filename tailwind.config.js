@@ -1,10 +1,8 @@
 module.exports = {
-  purge: [
+  content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  mode: "jit",
-  darkMode: false,
   theme: {
     extend: {
       colors: {
@@ -16,9 +14,6 @@ module.exports = {
         openSans: ["Open Sans", "sans-serif"],
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };
