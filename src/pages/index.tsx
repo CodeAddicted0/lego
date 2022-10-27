@@ -1,6 +1,5 @@
-import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/future/image";
+import Image from "next/image";
 import { useAppSelector } from "../redux/reduxHooks";
 import { useMediaQuery } from "react-responsive";
 import { useState, useEffect } from "react";
@@ -23,31 +22,20 @@ import { FiInstagram, FiTwitter } from "react-icons/fi";
 import { FaFacebookF } from "react-icons/fa";
 import { RiUser4Line } from "react-icons/ri";
 
-const Home: NextPage = () => {
+const Home = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const isNotMobile = useMediaQuery({ query: "(min-width: 769px)" });
   const navHeight = useAppSelector((store) => store.navHeight);
   const [hasMounted, setHasMounted] = useState<boolean>(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  const toggleVisibility = () => {
-    if (typeof window !== "undefined") {
-      if (window.pageYOffset > 300) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
-    }
-  };
-
   useEffect(() => {
     setHasMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", toggleVisibility);
-    }
+    window.addEventListener("scroll", () =>
+      window.pageYOffset > 300
+        ? setShowScrollTop(true)
+        : setShowScrollTop(false)
+    );
   }, []);
 
   return (
@@ -344,48 +332,48 @@ const Home: NextPage = () => {
         </div>
         <div
           style={{ flexBasis: "40%" }}
-          className="bg-dim-white rounded-lg h-full flex flex-col space-y-6 p-6 md:p-12"
+          className="bg-dim-white rounded-lg h-full flex flex-col space-y-6 px-6 py-12 md:p-12"
         >
-          <div className="flex flex-col space-y-3">
-            <label
-              htmlFor="name"
-              style={{ width: "fit-content" }}
-              className="font-medium text-md"
-            >
-              Your Name
-            </label>
-            <div className="flex w-full rounded-md shadow-sm items-center bg-white relative text-xl">
+          <div className="flex flex-col space-y-3 relative">
+            <div className="flex w-full rounded-md shadow-sm items-center bg-dim-white relative text-xl">
               <span className="flex items-center justify-between pointer-events-none absolute ml-4">
                 <RiUser4Line className="text-gray-600" />
               </span>
               <input
                 type="text"
-                placeholder="ex: John Smith"
                 name="name"
                 id="name"
-                className="w-full pl-12 text-base bg-transparent border-gray-300 rounded-md inline-block py-4 outline-none border-2 focus:border-blue-600 font-medium"
+                placeholder="sdc"
+                className="w-full pl-12 pr-4 text-base bg-transparent border-gray-300 rounded-md inline-block py-4 placeholder:text-transparent outline-none peer border-2 focus:border-blue-600 font-medium autofill:!shadow-[0_0_0_30px_#f0f0f0_inset]"
               />
+              <label
+                htmlFor="name"
+                style={{ width: "fit-content" }}
+                className="transition-all text-lg leading-relaxed font-medium text-neutral-500 duration-300 text-md mx-12 bg-dim-white peer-focus:-translate-y-full peer-placeholder-shown:-translate-y-0 -translate-y-full px-2 pointer-events-none absolute"
+              >
+                Full Name
+              </label>
             </div>
           </div>
-          <div className="flex flex-col space-y-3">
-            <label
-              htmlFor="email"
-              style={{ width: "fit-content" }}
-              className="font-medium text-md"
-            >
-              Your Email
-            </label>
-            <div className="flex w-full rounded-md shadow-sm items-center bg-white relative text-xl">
+          <div className="flex flex-col space-y-3 relative">
+            <div className="flex w-full rounded-md shadow-sm items-center bg-dim-white relative text-xl">
               <span className="flex items-center justify-between pointer-events-none absolute ml-4">
                 <HiOutlineMail className="text-gray-600" />
               </span>
               <input
                 type="text"
-                placeholder="ex: youremail@gmail.com"
                 name="email"
                 id="email"
-                className="w-full pl-12 text-base bg-transparent border-gray-300 rounded-md inline-block py-4 outline-none border-2 focus:border-blue-600 font-medium"
+                placeholder="sdc"
+                className="w-full pl-12 pr-4 text-base bg-transparent border-gray-300 rounded-md inline-block py-4 placeholder:text-transparent outline-none peer border-2 focus:border-blue-600 font-medium autofill:!shadow-[0_0_0_30px_#f0f0f0_inset]"
               />
+              <label
+                htmlFor="email"
+                style={{ width: "fit-content" }}
+                className="transition-all text-lg leading-relaxed font-medium text-neutral-500 duration-300 text-md mx-12 bg-dim-white peer-focus:-translate-y-full peer-placeholder-shown:-translate-y-0 -translate-y-full px-2 pointer-events-none absolute"
+              >
+                Email
+              </label>
             </div>
           </div>
           <div className="flex flex-col space-y-3">
@@ -397,11 +385,9 @@ const Home: NextPage = () => {
               Message
             </label>
             <textarea
-              placeholder="your message."
               name="message"
               id="message"
-              className="w-full text-base bg-transparent border-gray-300 rounded-md inline-block p-4 outline-none border-2 focus:border-blue-600 font-medium"
-              style={{ backgroundColor: "white" }}
+              className="w-full text-base bg-transparent border-gray-300 rounded-md inline-block p-4 outline-none border-2 bg-dim-white focus:border-blue-600 font-medium"
               rows={3}
             />
           </div>

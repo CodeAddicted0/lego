@@ -1,7 +1,6 @@
-import { FC } from "react";
 import Image from "next/image";
 
-const HeroBigImage: FC = () => {
+const HeroBigImage = () => {
   return (
     <div
       className="absolute right-0 top-0 bottom-0 w-5/12"
@@ -12,8 +11,8 @@ const HeroBigImage: FC = () => {
         quality={100}
         alt="house"
         src="/hero.webp"
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: "cover" }}
         className="z-3"
       />
       <div

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Image from "next/future/image";
+import Image from "next/image";
 import { BiBed, BiBath, BiArea } from "react-icons/bi";
 
 interface Props {

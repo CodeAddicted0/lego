@@ -52,16 +52,16 @@ const Nav: FC = () => {
         {!isTabletOrMobile && hasMounted && (
           <ul className="flex space-x-16 items-center font-medium text-dim-white">
             <li>
-              <Link href="#properties">Properties</Link>
+              <a href="#properties">Properties</a>
             </li>
             <li>
-              <Link href="#special">Special</Link>
+              <a href="#special">Special</a>
             </li>
             <li>
-              <Link href="#testimonial">Testimonial</Link>
+              <a href="#testimonial">Testimonial</a>
             </li>
             <li>
-              <Link href="#contact">Contact</Link>
+              <a href="#contact">Contact</a>
             </li>
           </ul>
         )}
@@ -83,16 +83,16 @@ const Nav: FC = () => {
           </div>
           <ul className="flex flex-col h-full w-full space-y-8 items-center font-medium justify-center text-dim-white text-2xl">
             <li onClick={() => setNavOpen(false)}>
-              <Link href="#properties">Properties</Link>
+              <a href="#properties">Properties</a>
             </li>
             <li onClick={() => setNavOpen(false)}>
-              <Link href="#special">Special</Link>
+              <a href="#special">Special</a>
             </li>
             <li onClick={() => setNavOpen(false)}>
-              <Link href="#testimonial">Testimonial</Link>
+              <a href="#testimonial">Testimonial</a>
             </li>
             <li onClick={() => setNavOpen(false)}>
-              <Link href="#contact">Contact</Link>
+              <a href="#contact">Contact</a>
             </li>
           </ul>
         </div>
