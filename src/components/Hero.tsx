@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 const Hero: FC = () => {
   const [hasMounted, setHasMounted] = useState<boolean>(false);
   const navHeight = useAppSelector((store) => store.navHeight);
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobileOrTablet = useMediaQuery({ query: "(max-width: 1224px)" });
 
   useEffect(() => {
     setHasMounted(true);
@@ -14,12 +14,13 @@ const Hero: FC = () => {
 
   return (
     <div
-      className="px-8 py-12 md:py-12 md:px-28 flex flex-col justify-center z-[3]"
+      className="px-8 py-12 md:py-20 md:px-20 lg:px-28 flex flex-col justify-center z-[3]"
       style={{
-        height: !isMobile && hasMounted ? `calc(100vh - ${navHeight}px)` : "",
+        height:
+          !isMobileOrTablet && hasMounted ? `calc(100vh - ${navHeight}px)` : "",
       }}
     >
-      <h1 className="font-openSans text-4xl sm:text-5xl font-bold md:text-7xl leading-none">
+      <h1 className="font-openSans text-4xl sm:text-5xl font-bold lg:text-7xl leading-none">
         Sell or rent
         <br /> your home at
         <br /> the best price.

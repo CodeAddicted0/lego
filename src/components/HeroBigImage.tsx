@@ -14,6 +14,7 @@ const HeroBigImage = () => {
         fill
         style={{ objectFit: "cover" }}
         className="z-3"
+        sizes="30vw"
       />
       <div
         className="bg-white absolute opacity-30"

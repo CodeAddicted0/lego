@@ -38,7 +38,7 @@ const RentSale: FC = () => {
           </button>
         </div>
         <div
-          className="flex flex-col md:flex-row bg-white text-black relative rounded-tr-md rounded-br-md rounded-bl-md"
+          className="flex flex-col lg:flex-row bg-white text-black relative rounded-tr-md rounded-br-md rounded-bl-md"
           style={{ width: "fit-content" }}
         >
           <div className="py-8 px-4 sm:px-8 flex space-x-8 items-center border-r-2 border-gray-300">
@@ -108,7 +108,7 @@ const RentSale: FC = () => {
           </div>
         </div>
       </div>
-      <div className="flex space-y-2 md:space-y-0 flex-col md:flex-row md:space-x-6 md:items-center mt-8">
+      <div className="flex space-y-4 md:text-lg lg:space-y-0 flex-col lg:flex-row lg:space-x-6 lg:items-center mt-8">
         <div className="flex items-center space-x-2">
           <input onChange={() => {}} type="checkbox" name="c1" id="c1" />
           <label htmlFor="c1">

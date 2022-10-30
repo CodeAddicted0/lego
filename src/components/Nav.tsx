@@ -1,5 +1,4 @@
 import { FC, useState, useEffect, useRef } from "react";
-import Link from "next/link";
 import { FcHome } from "react-icons/fc";
 import { useMediaQuery } from "react-responsive";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -8,7 +7,7 @@ import { useAppDispatch } from "../redux/reduxHooks";
 import { setNavHeight } from "../redux/navHeight";
 
 const Nav: FC = () => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const [navOpen, setNavOpen] = useState<boolean>(false);
   const [hasMounted, setHasMounted] = useState<boolean>(false);
   const navRef = useRef<HTMLElement>(null);
@@ -31,7 +30,7 @@ const Nav: FC = () => {
   return (
     <>
       <nav
-        className="px-8 flex justify-between items-center py-8 md:px-28 sticky  border-gray-500 top-0"
+        className="px-8 flex justify-between items-center py-8 md:px-20 lg:px-28 sticky  border-gray-500 top-0"
         style={{
           zIndex: 4,
           background: "rgba(6, 10, 17, 1)",
@@ -43,14 +42,14 @@ const Nav: FC = () => {
           <FcHome /> <span>Lego</span>
         </h1>
 
-        {isTabletOrMobile && hasMounted && (
+        {isMobile && hasMounted && (
           <button onClick={() => setNavOpen(true)} aria-label="menu">
             <AiOutlineMenu color="#fff" fontSize="2rem" />
           </button>
         )}
 
-        {!isTabletOrMobile && hasMounted && (
-          <ul className="flex space-x-16 items-center font-medium text-dim-white">
+        {!isMobile && hasMounted && (
+          <ul className="flex space-x-8 lg:space-x-16 items-center font-medium text-dim-white">
             <li>
               <a href="#properties">Properties</a>
             </li>
@@ -66,7 +65,7 @@ const Nav: FC = () => {
           </ul>
         )}
       </nav>
-      {isTabletOrMobile && hasMounted && (
+      {isMobile && hasMounted && (
         <div
           className={`fixed ${
             navOpen ? "left-0" : "left-full"

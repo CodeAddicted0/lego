@@ -23,8 +23,8 @@ import { FaFacebookF } from "react-icons/fa";
 import { RiUser4Line } from "react-icons/ri";
 
 const Home = () => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-  const isNotMobile = useMediaQuery({ query: "(min-width: 769px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  const isNotMobileOrTablet = useMediaQuery({ query: "(min-width: 1024px)" });
   const navHeight = useAppSelector((store) => store.navHeight);
   const [hasMounted, setHasMounted] = useState<boolean>(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -59,17 +59,17 @@ const Home = () => {
             left: "-10%",
           }}
         ></div>
-        {!isTabletOrMobile && hasMounted && <HeroBigImage />}
+        {!isMobile && hasMounted && <HeroBigImage />}
         <Hero />
       </div>
       {/* Sale Section */}
       <section
         id="properties"
         style={{ scrollMarginTop: `${navHeight}px` }}
-        className="md:py-24 md:px-28 px-8 py-8 flex flex-col bg-[#F3F4F6]"
+        className="md:py-24 lg:px-28 md:px-20 px-8 py-8 flex flex-col bg-[#F3F4F6]"
       >
         <div className="flex items-center justify-between">
-          <div className="flex md:items-center flex-col md:flex-row">
+          <div className="flex lg:items-center flex-col lg:flex-row">
             <div className="flex space-x-4 md:space-x-8 items-center">
               <div className="bg-blue-300 grid place-items-center p-3 rounded-full">
                 <div
@@ -84,14 +84,14 @@ const Home = () => {
                 <br /> For Sale.
               </h1>
             </div>
-            <p className="text-gray-900 mt-8 md:ml-24 md:mt-0 md:w-1/3 font-medium">
+            <p className="text-gray-900 mt-8 lg:ml-24 lg:mt-0 lg:w-1/3 font-medium">
               Proprietary technology, latest market data and strong real estate
               expertise allow us to reach potential buyers and present them with
               a well-priced.
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
           {sales.map((sale) => (
             <SaleHouse
               price={sale.price}
@@ -109,7 +109,7 @@ const Home = () => {
       <section
         style={{ scrollMarginTop: `${navHeight}px` }}
         id="special"
-        className="flex flex-col-reverse py-8 px-8 md:flex-row md:px-28 md:py-28 items-center"
+        className="flex flex-col-reverse py-8 px-8 md:flex-row md:px-20 lg:px-28 md:py-28 items-center"
       >
         <div
           style={{ flexBasis: "40%" }}
@@ -129,7 +129,7 @@ const Home = () => {
         </div>
         <div
           style={{ flexBasis: "60%" }}
-          className="flex flex-col md:ml-10 space-y-8 md:px-12"
+          className="flex flex-col md:ml-10 space-y-8 lg:px-12"
         >
           <h1 className="font-openSans text-3xl md:text-4xl text-gray-800">
             Let's Meet Rebsio!
@@ -139,7 +139,7 @@ const Home = () => {
             italian royality, the castle has 8 bedrooms and numerous reception
             rooms spread over approximately 1,000m<sup>2</sup> of living area.
           </p>
-          <div className="flex md:items-center md:space-x-6 flex-col md:space-y-0 space-y-4 md:flex-row">
+          <div className="flex lg:items-center lg:space-x-6 flex-col lg:space-y-0 space-y-4 lg:flex-row">
             <div className="flex items-center space-x-6">
               <div className="bg-gray-300 grid place-items-center p-3 rounded-full">
                 <div
@@ -181,7 +181,7 @@ const Home = () => {
           </div>
           <a
             href="#"
-            className="flex items-center font-openSans font-bold text-blue-600 text-md md:!mt-20"
+            className="flex items-center font-openSans font-bold text-blue-600 text-md lg:!mt-20"
           >
             See more Details
             <BsArrowRight fontSize="1.5rem" style={{ marginLeft: "1rem" }} />
@@ -194,10 +194,7 @@ const Home = () => {
         style={{ scrollMarginTop: `${navHeight}px` }}
         className="flex flex-col md:flex-row md:px-28 md:py-20 px-8 py-12"
       >
-        <div
-          className="flex flex-col space-y-12 md:pr-20"
-          style={{ flexBasis: "60%" }}
-        >
+        <div className="flex flex-col space-y-12 lg:pr-20 lg:basis-3/5">
           <h1 className="font-openSans text-2xl md:text-5xl text-gray-800">
             Here is what our clients are saying about us.
           </h1>
@@ -242,7 +239,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {isNotMobile && hasMounted && (
+        {isNotMobileOrTablet && hasMounted && (
           <div
             style={{ flexBasis: "40%" }}
             className="grid relative items-center justify-items-end"
@@ -267,11 +264,13 @@ const Home = () => {
           hasMounted
             ? {
                 scrollMarginTop: `${navHeight}px`,
-                height: isNotMobile ? `calc(100vh - ${navHeight}px)` : "",
+                height: isNotMobileOrTablet
+                  ? `calc(100vh - ${navHeight}px)`
+                  : "",
               }
             : { scrollMarginTop: `${navHeight}px` }
         }
-        className="flex space-y-6 md:space-y-0 flex-col md:flex-row md:px-28 px-8 py-12 bg-black-bg"
+        className="flex space-y-6 lg:space-y-0 flex-col lg:flex-row md:px-20 lg:px-28 px-8 py-12 bg-black-bg"
       >
         <div
           style={{ flexBasis: "60%" }}
